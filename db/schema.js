@@ -19,36 +19,65 @@ db.once('open', () => {
 
 const GiftSchema = new Schema (
     {
-        title: String,
-        description: String,
-        price: Number,
-        giftFrom: String,
-        photoURL: String
+        title: {
+            type: String,
+            required: [true, 'Gift title is required!']
+        },
+        description: {
+            type: String
+        },
+        price: {
+            type: Number
+        },
+        giftFrom: {
+            type: String
+        },
+        photoUrl: {
+            type: String,
+            default: 'https://cdn.vectorstock.com/i/thumb-large/66/69/santa-hat-vector-296669.jpg'
+        }
+    },
+    {
+        timestamps: {}
     }
 )
 const StoreSchema = new Schema (
     {
-        storeName: String,
-        storeAddress: [
-            {
-                streetNumber: Number,
-                streetName: String,
-                city: String,
-                state: String,
-                zip: Number
-            }
-        ],
+        name: {
+            type: String,
+            required: [true, 'Store name is required!']
+        },
+        storeAddress: {
+            type: String
+        },
         gifts: [GiftSchema]
     }
 )
 const UserSchema = new Schema (
     {
-        firstName: String,
-        lastName: String,
-        username: String,
-        email: String,
-        photoURL: String,
+        firstName: {
+            type: String,
+            required: [true, 'First name is required!']
+        },
+        lastName: {
+            type: String,
+            required: [true, 'Last name is required!']
+        },
+        username: {
+            type: String,
+            required: [true, 'Username is required!']
+        },
+        email: {
+            type: String
+        },
+        photoURL: {
+            type: String,
+            default: 'https://cdn.vectorstock.com/i/thumb-large/66/69/santa-hat-vector-296669.jpg'
+        },
         stores: [StoreSchema]
+    },
+    {
+        timestamps: {}
     }
 )
 
