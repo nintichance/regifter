@@ -27,12 +27,12 @@ const ninti = new User ({
                 zip: 30308
             }
         ],
-        gifts: [ {
+        giftsToReturn: [ {
             title: 'Calendar',
             description: 'It/s not as interesting as a notebook in my perspective',
             price: 5.99,
             giftFrom: 'Ninti herself!',
-            photoURL: 'img@example.com'
+            photoURL: 'https://cdn.vectorstock.com/i/thumb-large/66/69/santa-hat-vector-296669.jpg'
         }]
     }]
 })

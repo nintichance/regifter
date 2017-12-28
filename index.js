@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 
-
 const mongoose = require('mongoose')
+
+
+mongoose.Promise = global.Promise 
 mongoose.connect('mongodb://localhost/regifter_app', {
   useMongoClient: true
 })
@@ -16,6 +18,36 @@ db.on('error', function (err) {
 db.once('open', function () {
   console.log('database has been connected!')
 })
+
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+
+app.set('view engine', 'hbs')
+app.set('views', './views')
+
+// const giftsController = require('./controllers/giftsController')
+// app.use('/gifts', giftsController)
+
+// const storesController = require('./controllers/storesController')
+// app.use('/stores', storesController)
+
+const usersController = require('./controllers/usersController')
+app.use('/users', usersController)
+
+
+
+
+
+
+
+
+
+
+
+
 
 const PORT = process.env.PORT || 5700
 app.listen(PORT, ()=>{

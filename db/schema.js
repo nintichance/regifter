@@ -1,21 +1,21 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-mongoose.connect('mongodb://localhost/regifter_app', {
-  useMongoClient: true
-})
+// mongoose.connect('mongodb://localhost/regifter_app', {
+//   useMongoClient: true
+// })
 
 mongoose.Promise = global.Promise
 
-const db = mongoose.connection
+// const db = mongoose.connection
 
-db.on('error', (err) => {
-    console.log(err)
-})
+// db.on('error', (err) => {
+//     console.log(err)
+// })
 
-db.once('open', () => {
-    console.log("database has been connected!")
-})
+// db.once('open', () => {
+//     console.log("database has been connected!")
+// })
 
 const GiftSchema = new Schema (
     {
@@ -50,7 +50,7 @@ const StoreSchema = new Schema (
         storeAddress: {
             type: String
         },
-        gifts: [GiftSchema]
+        giftsToReturn: [GiftSchema]
     }
 )
 const UserSchema = new Schema (
