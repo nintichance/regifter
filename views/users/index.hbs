@@ -1,9 +1,13 @@
 <div>
-    <ul>
-        <li>First Name: {{User.ninti.firstName}}</li>
-        <li>Last Name: {{User.ninti.lastName}}</li>
-        <li>Username: {{User.ninti.username}}</li>
-        <li>Email: {{User.ninti.email}}</li>
-        <li>{{User.ninti.photoUrl}}</li>
-    </ul>
+    {{#each users}}
+    <div>
+        <img src="{{this.photoUrl}}" alt="Picture of {{this.username}}">
+        <p>Name: {{this.firstName}} {{this.lastName}}</p>
+        <p>Username: {{this.username}}</p>
+        <p>Email: {{this.email}}</p>
+    </div>
+    {{/each}}
+    <div>
+        <button>New User</button>
+    </div>
 </div>

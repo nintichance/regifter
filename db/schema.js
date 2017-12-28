@@ -70,7 +70,7 @@ const UserSchema = new Schema (
         email: {
             type: String
         },
-        photoURL: {
+        photoUrl: {
             type: String,
             default: 'https://cdn.vectorstock.com/i/thumb-large/66/69/santa-hat-vector-296669.jpg'
         },

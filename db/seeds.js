@@ -4,9 +4,9 @@ mongoose.connect('mongodb://localhost/regifter_app', {
 })
 
 
-const Gift = require('../models/gift')
-const Store = require('../models/store')
-const User = require('../models/user')
+const Gift = require('./models/gift')
+const Store = require('./models/store')
+const User = require('./models/user')
 
 mongoose.Promise = global.Promise 
 
@@ -15,9 +15,9 @@ const ninti = new User ({
     lastName: 'Chance',
     username: 'nintichance',
     email: 'ninti@ninti.com',
-    photoURL: '/Users/nintichance/Desktop/ninti_reg.jpg',
+    photoUrl: 'https://vignette.wikia.nocookie.net/gemcrust/images/c/c2/Steven_Universe_-_With_Weapon3.png/revision/latest?cb=20160911190428',
     stores: [{
-        storeName: 'Marshalls',
+        name: 'Marshalls',
         storeAddress: [
             {
                 streetNumber: 1000,

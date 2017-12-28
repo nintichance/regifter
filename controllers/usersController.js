@@ -14,6 +14,9 @@ router.get('/', (req, res)=>{
         console.log(err)
     })
 })
+router.get('/new', (req, res)=>{
+    res.render('users/new')
+})
 
 
 

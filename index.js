@@ -28,6 +28,8 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'hbs')
 app.set('views', './views')
 
+app.use(express.static('public'))
+
 // const giftsController = require('./controllers/giftsController')
 // app.use('/gifts', giftsController)
 
