@@ -15,10 +15,25 @@ router.get('/', (req, res)=>{
     })
 })
 router.get('/new', (req, res)=>{
-    res.render('users/new')
+   res.render('users/new')
 })
-
-
+router.post('/', (req, res)=>{
+    const newUser = new User ({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        email: req.body.email,
+        photoUrl: req.body.photoUrl
+    })
+    newUser.save()
+    .then((savedUser)=>{
+        console.log("Saved new user to the database")
+        res.render(savedUser)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+})
 
 
 
