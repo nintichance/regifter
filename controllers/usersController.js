@@ -26,9 +26,9 @@ router.post('/', (req, res)=>{
         photoUrl: req.body.photoUrl
     })
     newUser.save()
-    .then((savedUser)=>{
+    .then(()=>{
         console.log("Saved new user to the database")
-        res.render(savedUser)
+        res.redirect('/users')
     })
     .catch((err)=>{
         console.log(err)
