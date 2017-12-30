@@ -3,7 +3,8 @@
     <p>Name: {{user.firstName}} {{user.lastName}}</p>
     <p>Username: {{user.username}}</p>
     <p>Email: {{user.email}}</p>
-    <button class="delete">Delete User</button>
-    <button class="update">Edit User</button>
+    <button class="delete"><a href="/users/{{user._id}}/delete">Delete User</a></button>
+    <button class="update"><a href="/users/{{user._id}}/edit">Edit User</a></button>
     <button class="home">Go Home</button>
+    <button class="stores">Show Stores</button>
 </div>

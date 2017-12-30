@@ -19,6 +19,8 @@ db.once('open', function () {
   console.log('database has been connected!')
 })
 
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -38,6 +40,11 @@ app.use(express.static('public'))
 
 const usersController = require('./controllers/usersController')
 app.use('/users', usersController)
+
+app.get('/', (req, res)=>{
+   res.redirect('/users')
+})
+
 
 
 
