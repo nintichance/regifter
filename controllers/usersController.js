@@ -3,6 +3,7 @@ router = express.Router()
 
 const User = require('../db/models/user')
 
+
 router.get('/', (req, res)=>{
     User.find()
     .then((users)=>{
@@ -14,9 +15,11 @@ router.get('/', (req, res)=>{
         console.log(err)
     })
 })
+
 router.get('/new', (req, res)=>{
    res.render('users/new')
 })
+
 router.post('/', (req, res)=>{
     const newUser = new User ({
         firstName: req.body.firstName,
@@ -34,6 +37,20 @@ router.post('/', (req, res)=>{
         console.log(err)
     })
 })
+
+router.get('/:userId', (req, res) => {
+    const userId = req.params.userId
+    
+    User.findById(userId)
+      .then((user) => {
+        res.render('users/show', {
+            user
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  })
 
 
 
