@@ -1,0 +1,23 @@
+<div>
+    <div>
+        <p>{{userFullName}}'s Stores</p>
+        <img src="{{userPhoto}}" alt="{{userFullName}}'s profile picture">
+        <div>
+            <button class="newStore">
+                <a href="/users/{{userId}}/stores/new">Add a Store</a>
+            </button>
+        </div>
+
+    </div>
+    {{#each stores}}
+    <div>
+        <p>Store Name: {{this.name}}</p>
+        <p>Store Address: {{this.storeAddress}}</p>
+    </div>
+    {{/each}}
+    <div>
+        <button>
+            <a href="/users/{{userId}}">Return to User</a>
+        </button>
+    </div>
+</div>

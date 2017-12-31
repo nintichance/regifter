@@ -35,8 +35,8 @@ app.use(express.static('public'))
 // const giftsController = require('./controllers/giftsController')
 // app.use('/gifts', giftsController)
 
-// const storesController = require('./controllers/storesController')
-// app.use('/stores', storesController)
+const storesController = require('./controllers/storesController')
+app.use('/users/:userId/stores', storesController)
 
 const usersController = require('./controllers/usersController')
 app.use('/users', usersController)

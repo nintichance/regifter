@@ -62,6 +62,20 @@ router.get('/:userId', (req, res) => {
       })
   })
 
+
+router.put('/:userId', (req, res)=>{
+    const userId = req.params.userId
+    const updatedUserInfo = req.body
+
+      User.findByIdAndUpdate(userId, updatedUserInfo)
+      .then(()=>{
+          res.redirect(`/users/${userId}`)
+      })
+      .catch((err)=>{
+          console.log(err)
+      })
+})
+
   router.get('/:userId/delete', (req, res) => {
     const userId = req.params.userId
 
@@ -74,30 +88,7 @@ router.get('/:userId', (req, res) => {
     })
 })
 
-router.put('/:userId', (req, res)=>{
-    console.log('banana')
-    const userId = req.params.userId
-    const updatedUserInfo = req.body
-    console.log(userId)
-    console.log(updatedUserInfo)
-      User.findByIdAndUpdate(userId, updatedUserInfo)
-      .then(()=>{
-          res.redirect(`/users/${userId}`)
-      })
-      .catch((err)=>{
-          console.log(err)
-      })
-})
 
-// router.put('/:userId', (request, response) => {
-//     const userId = request.params.userId
-//     const updatedUserInfo = request.body
-  
-//     User.findByIdAndUpdate(userId, updatedUserInfo, {new: true})
-//       .then(() => {
-//         response.redirect(`/users/${userId}`)
-//       })
-//   })
 
 
 module.exports = router 
