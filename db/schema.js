@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+ 
 
 // mongoose.connect('mongodb://localhost/regifter_app', {
 //   useMongoClient: true
 // })
 
 mongoose.Promise = global.Promise
+
+mongoose.plugin(schema => { schema.options.usePushEach = true })
 
 // const db = mongoose.connection
 
@@ -21,7 +24,6 @@ const GiftSchema = new Schema (
     {
         title: {
             type: String,
-            required: [true, 'Gift title is required!']
         },
         description: {
             type: String
@@ -35,7 +37,7 @@ const GiftSchema = new Schema (
         photoUrl: {
             type: String,
             default: 'https://cdn.vectorstock.com/i/thumb-large/66/69/santa-hat-vector-296669.jpg'
-        }
+        },
     },
     {
         timestamps: {}
@@ -45,7 +47,6 @@ const StoreSchema = new Schema (
     {
         name: {
             type: String,
-            required: [true, 'Store name is required!']
         },
         storeAddress: {
             type: String
@@ -79,7 +80,6 @@ const UserSchema = new Schema (
 )
 
 const User = mongoose.model('User', UserSchema)
-
 
 module.exports = {
     UserSchema,

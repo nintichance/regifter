@@ -21,23 +21,29 @@ router.get('/', (req, res)=>{
 })
 
 router.get('/new', (req, res)=>{
-    res.render('stores/new')
+    const userId = req.params.userId
+    res.render('stores/new', {
+        userId,
+        pageTitle: 'New_Store'
+    })
 })
 
-// router.post('/', (req, res)=>{
-//     const newStore = new Store ({
-//         name: req.body.name,
-//         storeAddress: req.body.storeAddress,
-//     })
-//     newStore.save()
-//     .then(()=>{
-//         console.log("Saved new store to the database")
-//         res.redirect(`/users/${userId}`)
-//     })
-//     .catch((err)=>{
-//         console.log(err)
-//     })
-// })
+router.post('/', (req, res)=>{
+    const userId = req.params.userId
+    const newStore = req.body
 
+    User.findById(userId)
+    .then((user)=>{
+        user.stores.push(newStore)
+        return user.save()
+    })
+    .then(()=>{
+        console.log("Updated user store")
+        res.redirect(`/users/${userId}/stores`)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+})
 
 module.exports = router 
